@@ -1,0 +1,24 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npx ts-node src/index.ts",
+    "dev": "nodemon src/index.ts"
+  },
+  "author": "Vladimir Bondar <vladi.bondar@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.31",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}
