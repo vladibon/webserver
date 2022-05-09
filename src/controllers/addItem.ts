@@ -1,18 +1,21 @@
 import { RequestHandler } from 'express';
 import { add } from '../data/list';
+import { Schema } from '../schemas/schema';
 
 const addItem: RequestHandler = (req, res) => {
-  const { item } = req.body;
+  try {
+    const { item } = req.body;
 
-  typeof item === 'string'
-    ? add(item)
-    : res.status(400).json({
-        status: 400,
-        message: 'Item should be of type string',
-        name: 'BadRequestError',
-      });
+    const { error } = Schema.validate(req.body);
 
-  res.status(201).json(item);
+    if (error) throw new Error('item should be of type string');
+
+    add(item);
+
+    res.status(201).json(item);
+  } catch (error: any) {
+    res.status(400).json(error.message);
+  }
 };
 
 export default addItem;
